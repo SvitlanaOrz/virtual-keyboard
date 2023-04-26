@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+}
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.keyboard-name {
+  text-align: center;
+  font-size: 3rem;
+  margin: 10px 0;
+}
+.keyboard-screen {
+  width: 95%;
+  margin: 0 auto;
+  display: block;
+}
+.keyboard {
+  width: 95%;
+  margin: 20px auto;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: #a9a9a9;
+  padding: 10px 10px 0 0;
+}
+
+.keyboard__row {
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+.button {
+  background-color: #545454;
+  display: inline-block;
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 5px;
+}
+.button:hover {
+  background-color: #7250c0;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.button:active {
+  border-radius: 50%;
+}
+
+.button__text-content {
+  display: inline-block;
+  color: white;
+  margin-top: 12px;
+  font-size: 20px;
+}
+.middle-button {
+  width: 70px;
+}
+.long-button {
+  width: 100px;
+}
+.special-button {
+  background-color: #2c2c2c;
+}
+.space-button {
+  width: 450px;
+}
+
+.additional-information {
+  width: 95%;
+  margin: 10px 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
