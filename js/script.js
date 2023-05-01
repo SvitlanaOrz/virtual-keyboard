@@ -450,6 +450,9 @@ function showContent(event) {
 }
 
 function showKeyboarContent(event) {
+  if (event.repeat) {
+    return;
+  }
   event.preventDefault();
 
   let cursor = keyboardScreen.selectionStart;
@@ -460,7 +463,7 @@ function showKeyboarContent(event) {
     changeTextSize();
     // если нажат Shift
   } else if (event.code === "ShiftLeft" || event.code === "ShiftRight") {
-    openShiftContent();
+    openShiftContent(event);
   } else if (pressed.has("ControlLeft") && pressed.has("AltLeft")) {
     // если нажат Ctrl+Alt
     changeLanguage();
@@ -617,7 +620,11 @@ function changeLanguage() {
   }
 }
 
-function openShiftContent() {
+function openShiftContent(event) {
+  if (event.repeat) {
+    return;
+  }
+
   changeTextSize();
   if (language === "ru") {
     rushift.forEach((elem) => {
@@ -643,6 +650,7 @@ function openShiftContent() {
 }
 
 function closeShiftContent() {
+  changeTextSize();
   rushift.forEach((elem) => {
     elem.classList.add("hidden");
   });
@@ -652,8 +660,6 @@ function closeShiftContent() {
   unShift.forEach((elem) => {
     elem.classList.remove("hidden");
   });
-
-  changeTextSize();
 }
 
 function removeKeyboardStyle(event) {
