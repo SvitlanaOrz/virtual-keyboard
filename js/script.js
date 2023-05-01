@@ -84,7 +84,7 @@ let newElem = `<main class="container">
     </div>
   </div>
   <div class="keyboard__row">
-    <div class="button text-button middle-button special-button tab">
+    <div class="button text-button middle-button special-button Tab">
       <span class="button__text-content">Tab</span>
     </div>
     <div class="button text-button KeyQ">
@@ -666,7 +666,9 @@ function removeKeyboardStyle(event) {
   pressed.delete(event.code);
 
   let btn = document.querySelector(`.${event.code}`);
-  btn.removeAttribute("style");
+  if (btn.hasAttribute) {
+    btn.removeAttribute("style");
+  }
   if (event.code === "ShiftRight" || event.code === "ShiftLeft") {
     closeShiftContent();
   }
