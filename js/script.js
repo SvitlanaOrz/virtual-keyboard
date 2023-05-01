@@ -400,6 +400,14 @@ let language = localStorage.getItem("language") || "ru";
 let wordsSize = "small";
 let pressed = new Set();
 
+if (language === "en") {
+  changeLanguageOnEn();
+}
+
+window.addEventListener("beforeunload", (event) => {
+  localStorage.setItem("language", language);
+});
+
 function showContent(event) {
   event.preventDefault();
   let cursor = keyboardScreen.selectionStart;
@@ -445,7 +453,7 @@ function showKeyboarContent(event) {
   event.preventDefault();
 
   let cursor = keyboardScreen.selectionStart;
-  console.log(event.code);
+
   pressed.add(event.code);
   // если нажат CapsLock
   if (event.code === "CapsLock") {
@@ -575,11 +583,8 @@ function changeLanguageOnEn() {
       elem.classList.add("hidden");
     });
   }
-  console.log(language);
+
   language = "en";
-  //   window.addEventListener("beforeunload", () => {
-  //     localStorage.setItem("language", language);
-  //   });
 }
 
 function changeLanguageOnRu() {
@@ -600,11 +605,8 @@ function changeLanguageOnRu() {
       elem.classList.add("hidden");
     });
   }
-  console.log(language);
+
   language = "ru";
-  //   window.addEventListener("beforeunload", () => {
-  //     localStorage.setItem("language", language);
-  //   });
 }
 
 function changeLanguage() {
