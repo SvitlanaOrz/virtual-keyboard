@@ -1,4 +1,5 @@
-let newElem = `<main class="container">
+let newElem;
+newElem = `<main class="container">
 <h1 class="keyboard-name">Виртуальная клавиатура</h1>
 <form>
   <textarea
@@ -378,12 +379,10 @@ let body = document.querySelector("#body");
 body.insertAdjacentHTML("beforeend", newElem);
 
 let buttons = document.querySelectorAll(".button");
-let spetialButtons = document.querySelectorAll(".special-button");
 let textButtons = document.querySelectorAll(".text-button");
 let keyboardScreen = document.querySelector("#keyboard-screen");
 let capsLock = document.querySelector(".CapsLock");
 let shift = document.querySelectorAll(".shift");
-let tab = document.querySelectorAll(".tab");
 
 let ruSmall = document.querySelectorAll(".ru-small");
 let ruBig = document.querySelectorAll(".ru-big");
@@ -404,7 +403,7 @@ if (language === "en") {
   changeLanguageOnEn();
 }
 
-window.addEventListener("beforeunload", (event) => {
+window.addEventListener("beforeunload", () => {
   localStorage.setItem("language", language);
 });
 
@@ -499,18 +498,18 @@ function showKeyboarContent(event) {
     //вывести в екран значение при клике на клавиатуре стандартные клавиши
     buttons.forEach((elem) => {
       if (elem.classList.contains(event.code)) {
-        for (child of elem.children) {
+        for (let child of elem.children) {
           if (
             child.innerHTML === "Ctrl" ||
             child.innerHTML === "Alt" ||
             child.innerHTML === "Del"
           ) {
+            return;
           } else if (!child.classList.contains("hidden")) {
             keyboardScreen.innerHTML =
               keyboardScreen.value.slice(0, cursor) +
               child.innerHTML +
               keyboardScreen.value.slice(cursor);
-
             keyboardScreen.selectionStart = cursor + 1;
           }
         }
